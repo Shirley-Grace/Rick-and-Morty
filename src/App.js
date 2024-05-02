@@ -1,35 +1,17 @@
 import React, { useState, useEffect } from 'react'
+// import { BrowserRouter as Routes, Route, Router } from 'react-router-dom';
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap";
 import Cards from "./Components/Cards";
 import { Search } from './Components/Search';
 import { Nav } from './Components/Nav';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Humans from "./Components/Humans";
-import Aliens from "./Components/Aliens";
+import Page from "./Components/Page";
+// import Humans from "./Components/Humans";
+// import Aliens from "./Components/Aliens";
+// import Page from './Components/Page';
 
 function App() {
-  return (
-    <Router>
-      <div className='App'>
-        <Nav />
-      </div>
-
-      <Routes>
-        <Route path="/" element={Home} />
-        <Route path="/humans" element={Humans} />
-        <Route path="/aliens" element={Aliens} />
-      </Routes>
-
-      
-    </Router>
-  )
-
-}
-
-
-const Home = () => {
   let [pageNum, setPageNum] = useState(1);
   let [search, setSearch] = useState("");
 
@@ -45,12 +27,11 @@ const Home = () => {
     })()
   }, [api])
 
-
-
-
-
   return (
     <div className="App">
+        <div className='App'>
+        <Nav />
+      </div>
       <div className='mb-4'>
         <Search setPageNum={setPageNum} setSearch={setSearch} />
       </div>
@@ -60,6 +41,7 @@ const Home = () => {
           <Cards results={results} />
         </div>
       </div>
+      <Page info={info} pageNum={pageNum} setPageNum={setPageNum}/>
     </div>
   );
 }

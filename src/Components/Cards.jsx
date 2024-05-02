@@ -10,7 +10,7 @@ export const Cards = ({ results }) => {
     display = results.map(cast => {
       let { id, name,image, species,origin } = cast
       return (
-      <div key={id} className='col-3 position-relative border border-info border-2 rounded mb-3'>
+      <div key={id} className='rowcol-3 position-relative border border-info border-2 rounded mb-3'>
        
           <img src={image} alt="" className="img-fluid" />
           <div className="container">
